@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<!-- saved from url=(0069)https://career.hihonor.com/SU5ff669649b0d78e6f4296c9a/pb/interns.html -->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#000000">
+    <link rel="shortcut icon" href="https://career.hihonor.com/SU5ff669649b0d78e6f4296c9a/pb/favicon.ico">
+    <title>天乐湖 | 后台管理</title>
+    <style>
+        #ietips {
+            position: fixed;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            line-height: 40px;
+            display: none;
+            text-align: center;
+            z-index: 1000;
+        }
+    </style>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url("resources/images/dsc.jpg") no-repeat center center/cover;
+            margin: 0;
+        }
+
+        header {
+            padding: 15px 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9;
+        }
+
+
+        img {
+            vertical-align: middle;
+            border-style: none;
+            height: 42px;
+        }
+
+        .overlay {
+            background-color: rgba(132, 96, 246, 0.8);
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        .text-white {
+            z-index: 999;
+            color: #fff;
+            font-weight: 100;
+            font-size: 55px;
+            line-height: 1.2em;
+            letter-spacing: 6px;
+        }
+
+        .banner {
+            text-align: center;
+            position: relative;
+            padding-top: 100px;
+            width: 100%;
+        }
+
+        div.flow-count {
+            display: block;
+            padding-top: 5%;
+            text-align: center;
+            margin: 0 .1em;
+            border-radius: 8px;
+            text-shadow: 2px 1px 3px #4e555b;
+        }
+
+        div.flow-count p {
+            z-index: 999;
+            color: #fff;
+            font-weight: 100;
+            font-size: 45px;
+            line-height: 1.2em;
+        }
+
+    </style>
+    <link href="resources/css/vendor.css" rel="stylesheet">
+    <link href="resources/css/interns.css" rel="stylesheet">
+    <style data-styled="" data-styled-version="4.0.2"></style>
+</head>
+<body>
+<div id="ietips">IE浏览器版本过低，可能影响使用，建议升级浏览器，或者下载其他浏览器来打开本网站。</div>
+<noscript>
+    You need to enable JavaScript to run this app.
+</noscript>
+<div id="root">
+    <div class="layout" style="min-height: 949px;">
+        <div class="headerPlaceholder"></div>
+        <div class="common-header fixed" style="background-color: rgb(255, 255, 255); color: rgba(34, 34, 34, 0.65);">
+            <div class="logo-wrap">
+                <img src="resources/images/logo.png" alt="" class="logo">
+            </div>
+
+            <ul class="navbar">
+                <li class="nav-item active" style="border-color: rgb(0, 0, 0); color: rgb(34, 34, 34);"><a href="./passgerflow.html">首页</a></li>
+                <li class="nav-item " ><a
+                        href="manage/empreport.html">人员报表</a></li>
+                <li class="nav-item " style=""><a
+                        href="manage/scenicreport.html">景点报表</a></li>
+                <li class="nav-item  " ><a
+                        href="manage/hrmanage.html">职工管理</a></li>
+                <li class="nav-item  " ><a
+                        href="manage/ticketreport.html">票务记录</a></li>
+            </ul>
+            <div class="right-nav">
+                <div class="login-btn-wrap" style="display: block;"><span class="reg-btn" style="background-color: rgb(0, 0, 0); color: rgb(255, 255, 255);">注册</span><span
+                        class="login-btn" style="background-color: rgb(0, 0, 0); color: rgb(255, 255, 255);">登录</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="overlay"></div>
+        <div class="banner">
+            <h1 class="text-white">今日客流量</h1>
+            <div class="flow-count">
+                <p class="flow-count">0</p>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<script>
+    function empReport(d){
+        let table = $(".list-box")
+        table.find(".list-row-item").remove()
+        let data=[1,2,3]
+        for(let record of data){
+            table.append(
+                '<div className="list-row-item">'+
+                '<div className="list-cell pos-name" style="width: auto; flex: 1 1 0%;"> <span className="list-cell-span" title="猫南北">猫南北</span></div>'+
+                '<div className="list-cell pos-cate" style="width: auto; flex: 1 1 0%;"> <span className="list-cell-span" title="tldj001">tldj001</span> </div>'+
+                '<div className="list-cell pos-workType" style="width: auto; flex: 1 1 0%;"><span className="list-cell-span" title="15">15</span> </div>'+
+                '<div className="list-cell pos-pubTime" style="width: auto; flex: 1 1 0%;"><span className="list-cell-span" title="2021-06-28">2021-06-28</span></div>'+
+                '<div className="list-cell pos-locate" style="width: auto; flex: 1 1 0%;"><span className="list-cell-span" title="云霄飞车">云霄飞车</span>/div>'+
+                '/div>'
+            )
+        }
+    }
+</script>
+<script>
+    /* 低版本ie浏览器提示 */
+    if (navigator.appVersion.toLowerCase().indexOf("msie") > -1) {
+        document.getElementById("ietips").style.display = 'block'
+    }
+
+    /* 兼容ie  scrollTo  nodeList的forEach方法*/
+    if (!window.scrollTo) {
+        window.scrollTo = function (x, y) {
+            window.pageXOffset = x;
+            window.pageYOffset = y;
+        };
+    }
+    if (!window.scrollBy) {
+        window.scrollBy = function (x, y) {
+            window.pageXOffset += x;
+            window.pageYOffset += y;
+        };
+    }
+    if (!document.body.scrollTo) {
+        Element.prototype.scrollTo = function (x, y) {
+            this.scrollLeft = x;
+            this.scrollTop = y;
+        };
+    }
+    if (!document.body.scrollBy) {
+        Element.prototype.scrollBy = function (x, y) {
+            this.scrollLeft += x;
+            this.scrollTop += y;
+        };
+    }
+    if (window.NodeList && !NodeList.prototype.forEach) {
+        NodeList.prototype.forEach = function (callback, thisArg) {
+            thisArg = thisArg || window
+            for (let i = 0; i < this.length; i++) {
+                callback.call(thisArg, this[i], i, this)
+            }
+        }
+    }
+    // window.addEventListener('resize', setHtmlFont, false);
+    // window.addEventListener('load', setHtmlFont, false);
+
+    //   function setHtmlFont() {
+    //     var designSize = 1920; // 设计图尺寸
+
+    //     var html = document.documentElement;
+
+    //     var wW = html.clientWidth;// 窗口宽度
+    //     var rem = wW * 100 / designSize;
+
+    //     document.documentElement.style.fontSize = rem + 'px';
+    //   }
+</script>
+
+</body>
+</html>

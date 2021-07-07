@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.the.dao.RecordMapper">
+    <insert id="addRecord" parameterType="WorkRecord">
+        insert into workRecord(timeDate,employeeID,scenicID,punchIn,isOnline)
+        values(#{timeDate},#{employeeID},#{scenicID},#{punchIn},true)
+        on DUPLICATE KEY UPDATE
+        scenicID=#{scenicID} , isOnline=true;
+    </insert>
+    <select id="queryPeriodByEmpID" parameterType="String" resultType="HashMap">
+        select e.name, sum(w.receptionCount) as receptionCount,sum(w.fiveStarCount) as fiveStarCount, sum(w.fourStarCount) as fourStarCount,
+                sum(w.threeStarCount) as threeStarCount,sum(w.twoStarCount) as twoStarCount,sum(w.oneStarCount) as oneStarCount
+        from workRecord as w join employee  as e
+        on w.employeeID=e.employeeID
+        where w.timeDate between #{start} and #{end} group by w.employeeID;
+    </select>
+    <select id="queryNameByScenicID" resultType="HashMap">
+        select  e.name,e.employeeID
+        from workRecord as w join employee  as e
+        on w.employeeID=e.employeeID
+        where w.timeDate=#{date} and  w.scenicID=#{scenicID} and isOnline=true;
+    </select>
+
+    <update id="employeeLogout" >
+        update workRecord set isOnline=false,punchOff=#{clock}
+        where timeDate=#{date} and employeeID=#{employeeID};
+    </update>
+    <update id="modifyScenicID">
+        update workRecord set scenicID=#{scenicID}
+        where timeDate=#{date} and employeeID=#{employeeID};
+    </update>
+</mapper>
