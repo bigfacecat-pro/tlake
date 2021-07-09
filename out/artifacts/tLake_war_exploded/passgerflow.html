@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="theme-color" content="#000000">
-    <link rel="shortcut icon" href="https://career.hihonor.com/SU5ff669649b0d78e6f4296c9a/pb/favicon.ico">
+
+    <script src="resources/js/jquery-3.5.1.min.js"></script>
+    <script src="resources/js/scokjs.js"></script>
     <title>天乐湖 | 后台管理</title>
     <style>
         #ietips {
@@ -137,22 +139,52 @@
     </div>
 </div>
 <script>
-    function empReport(d){
-        let table = $(".list-box")
-        table.find(".list-row-item").remove()
-        let data=[1,2,3]
-        for(let record of data){
-            table.append(
-                '<div className="list-row-item">'+
-                '<div className="list-cell pos-name" style="width: auto; flex: 1 1 0%;"> <span className="list-cell-span" title="猫南北">猫南北</span></div>'+
-                '<div className="list-cell pos-cate" style="width: auto; flex: 1 1 0%;"> <span className="list-cell-span" title="tldj001">tldj001</span> </div>'+
-                '<div className="list-cell pos-workType" style="width: auto; flex: 1 1 0%;"><span className="list-cell-span" title="15">15</span> </div>'+
-                '<div className="list-cell pos-pubTime" style="width: auto; flex: 1 1 0%;"><span className="list-cell-span" title="2021-06-28">2021-06-28</span></div>'+
-                '<div className="list-cell pos-locate" style="width: auto; flex: 1 1 0%;"><span className="list-cell-span" title="云霄飞车">云霄飞车</span>/div>'+
-                '/div>'
-            )
-        }
+    //setInterval("getPassgerFlow()",3000)
+    getPassgerFlow();
+    function getPassgerFlow(){
+        $.post(
+            "/reception/flow",
+            {},
+            function(response){
+                if(response.result=="success")
+                    $("p.flow-count").text(response.data.flow)
+            },
+            "json"
+        )
     }
+
+    let webSocket=null
+    if('WebSocket' in window)
+        webSocket=new WebSocket("ws://localhost:8080/websocket/socketServer.do")
+    else if ('MozWebSocket' in window) {
+        websocket = new MozWebSocket("ws://localhost:8080/websocket/socketServer.do");
+    }
+    else {
+        websocket = new SockJS("http://localhost:8080/sockjs/socketServer.do");
+    }
+    webSocket.onclose=onClose
+    webSocket.onopen=onOpen
+    webSocket.onmessage=onMessage
+    webSocket.onerror=onError
+
+    function onOpen(){
+
+    }
+    function onClose(){
+
+    }
+    function onMessage(result){
+        console.log(result)
+        $("p.flow-count").text(result.data)
+    }
+    function onError(){
+
+    }
+    window.close=function (){
+        webSocket.onclose();
+    }
+
+
 </script>
 <script>
     /* 低版本ie浏览器提示 */

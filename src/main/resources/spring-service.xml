@@ -18,6 +18,10 @@
     <bean id="employeeServiceImpl" class="com.the.service.EmployeeServiceImpl">
         <property name="employeeMapper" ref="employeeMapper"/>
     </bean>
+    <bean id="receptionServiceImpl" class="com.the.service.ReceptionServiceImpl">
+        <property name="receptionMapper" ref="receptionMapper"/>
+    </bean>
+
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>

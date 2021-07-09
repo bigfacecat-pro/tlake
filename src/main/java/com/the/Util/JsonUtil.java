@@ -27,6 +27,20 @@ public class JsonUtil {
         jsonObject.put("data",jsonData);
         return jsonObject.toJSONString();
     }
+    public static String getJson(boolean result,String message, HashMap<String,String> data){
+        JSONObject jsonObject=new JSONObject();
+        jsonObject.put("result",result?"success":"error");
+        jsonObject.put("message",message);
+        JSONObject jsonData= JSONArray.parseObject(JSON.toJSONString(data));
+        jsonObject.put("data",jsonData);
+        return jsonObject.toJSONString();
+    }
+    public static String getJson(boolean result,String message){
+        JSONObject jsonObject=new JSONObject();
+        jsonObject.put("result",result?"success":"error");
+        jsonObject.put("message",message);
+        return jsonObject.toJSONString();
+    }
 }
 /*
 {

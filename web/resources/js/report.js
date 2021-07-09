@@ -27,7 +27,17 @@ function getSinglePerson(dateStart,dateEnd,employeeID){
         "json"
     )
 }
-
+function getToday(){
+    let nowDate = new Date();
+    let year = nowDate.getFullYear();
+    let month = nowDate.getMonth() + 1 < 10 ? "0" + (nowDate.getMonth() + 1)
+        : nowDate.getMonth() + 1;
+    let day = nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate
+        .getDate();
+    let dateStr = year + "-" + month + "-" + day;
+    $("input.date-select").val(dateStr)
+    return dateStr
+}
 
 /*
 <div className="list-row-item">

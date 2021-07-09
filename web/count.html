@@ -99,11 +99,11 @@
             emp=emp+item+" "
         emp=emp.substr(0,emp.length-1)
         $.post(
-            "./checkQR",
+            "/reception/create",
             {
                 "ticketID": QRCodeInput.val(),
                 "scenicID": isWhere ,
-                "employees":emp,
+                "employeeID":emp,
             },
             function (data) {
                 QRCodeInput.val('')
@@ -127,14 +127,14 @@
     function scanEmployee(){
         if(isLogout){
             $.post(
-                "./employee",
+                "./record/logout",
                 {
                     "employeeID": QRCodeInput.val(),
-                    "scenicID": encodeURI(isWhere),
                 },
-                function (data){
-                    QRCodeTip.text(data.message)
-                    isEmployeesHere()
+                function (response){
+                    if(response.result=="success")
+                        isEmployeesHere()
+                    QRCodeTip.text(response.message)
                 },
                 "json"
             )
@@ -145,18 +145,16 @@
                     "employeeID": QRCodeInput.val(),
                     "scenicID": encodeURI(isWhere),
                 },
-                function (data) {
-                    QRCodeTip.text(data.message)
-                    if (!isLogout) {
-                        if (data.result == "success") {
-                            let emp = data.message.split(" ");
-                            if (!employees.has(emp[0]))
-                                employees.set(emp[0], emp[1])
-                        }
-                        QRCodeInput.val('')
-
-                        updateEmp()
-                    }
+                function (response) {
+                    if (response.result == "success") {
+                        QRCodeTip.text(response.data.name+ response.message)
+                        let empID = response.data.employeeID;
+                        if (!employees.has(empID))
+                            employees.set(empID, response.data.name)
+                    }else
+                        QRCodeTip.text(response.message)
+                    QRCodeInput.val('')
+                    updateEmp()
                 },
                 "json"
             )

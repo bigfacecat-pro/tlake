@@ -28,6 +28,9 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:5.3.8" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:5.3.8" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:5.3.8" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-websocket:5.3.8" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.31" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-messaging:5.3.8" />
         </element>
       </element>
     </root>

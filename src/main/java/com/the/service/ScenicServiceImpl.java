@@ -7,12 +7,14 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ScenicServiceImpl implements ScenicService{
+
+    @Autowired
+    private ScenicMapper scenicMapper;
+
     public void setScenicMapper(ScenicMapper scenicMapper) {
         this.scenicMapper = scenicMapper;
     }
 
-    @Autowired
-    private ScenicMapper scenicMapper;
 
     public ScenicServiceImpl(ScenicMapper scenicMapper) {
         this.scenicMapper = scenicMapper;

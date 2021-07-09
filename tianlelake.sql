@@ -105,13 +105,13 @@ INSERT INTO `scenicprojects` VALUES (44, '水上乐园', 1);
 -- ----------------------------
 -- Table structure for ticketreception
 -- ----------------------------
-DROP TABLE IF EXISTS `ticketreception`;
-CREATE TABLE `ticketreception`  (
-  `timeDate` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `timeClock` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `ticketID` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `scenicProjects` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `employees` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+DROP TABLE IF EXISTS `reception`;
+CREATE TABLE `reception`  (
+  `timeDate` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci not null ,
+  `timeClock` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci not null ,
+  `ticketID` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci not null ,
+  `scenicID` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci not null ,
+  `employeeID` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci not null ,
   `remark` int(11) NULL DEFAULT 0
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 

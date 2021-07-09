@@ -10,8 +10,8 @@ public interface RecordService {
     int employeeLogout(String employeeID);
 
 
-    List<HashMap<String,String>> queryPeriodByEmpID(String start,  String end);
-    List<HashMap<String,String>>  queryPeriodByEmpID();
+    List<HashMap<String,String>> queryPeriod(String start,  String end);
     List<HashMap<String,String>> queryNameByScenicID(int scenicID);
+    List<HashMap<String,String>> querySingleEmployee(String employeeID);
 
 }

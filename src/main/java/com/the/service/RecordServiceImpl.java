@@ -18,15 +18,9 @@ public class RecordServiceImpl implements RecordService{
     }
 
     @Override
-    public  List<HashMap<String,String>> queryPeriodByEmpID(String start, String end) {
-        return recordMapper.queryPeriodByEmpID(start,end);
+    public  List<HashMap<String,String>> queryPeriod(String start, String end) {
+        return recordMapper.queryPeriod(start,end);
     }
-    @Override
-    public List<HashMap<String,String>> queryPeriodByEmpID() {
-        String today= TimeUtil.getDate();
-        return recordMapper.queryPeriodByEmpID(today,today);
-    }
-
 
     @Override
     public int employeeLogout(String employeeID) {
@@ -43,5 +37,10 @@ public class RecordServiceImpl implements RecordService{
     @Override
     public List<HashMap<String,String>> queryNameByScenicID(int scenicID) {
         return recordMapper.queryNameByScenicID(TimeUtil.getDate(), scenicID);
+    }
+
+    @Override
+    public List<HashMap<String, String>> querySingleEmployee(String employeeID) {
+        return recordMapper.querySingleEmployee(employeeID);
     }
 }

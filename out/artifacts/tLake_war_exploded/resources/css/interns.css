@@ -496,7 +496,7 @@
     margin-top: 10px
 }
 
-.hor-nav .serach-bar .hor-nav-item .search-ipt {
+.hor-nav-item .search-ipt {
     display: inline-block;
     width: 310px;
     height: 46px;
@@ -600,7 +600,7 @@
     margin-top: 0
 }
 
-.topLeftStyle .serach-bar .hor-nav-item .search-ipt {
+.serach-bar .hor-nav-item .search-ipt {
     width: 100%;
     height: 59px;
     border: none;

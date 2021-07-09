@@ -9,11 +9,12 @@
         on DUPLICATE KEY UPDATE
         scenicID=#{scenicID} , isOnline=true;
     </insert>
-    <select id="queryPeriodByEmpID" parameterType="String" resultType="HashMap">
-        select e.name, sum(w.receptionCount) as receptionCount,sum(w.fiveStarCount) as fiveStarCount, sum(w.fourStarCount) as fourStarCount,
+    <select id="queryPeriod" parameterType="String" resultType="HashMap">
+        select e.name,w.employeeID,any_value(s.scenicName) as scenicName, sum(w.receptionCount) as receptionCount,sum(w.fiveStarCount) as fiveStarCount, sum(w.fourStarCount) as fourStarCount,
                 sum(w.threeStarCount) as threeStarCount,sum(w.twoStarCount) as twoStarCount,sum(w.oneStarCount) as oneStarCount
-        from workRecord as w join employee  as e
-        on w.employeeID=e.employeeID
+        from employee  as e
+            join workRecord as w on w.employeeID=e.employeeID
+            join scenic as s on w.scenicID=s.scenicID
         where w.timeDate between #{start} and #{end} group by w.employeeID;
     </select>
     <select id="queryNameByScenicID" resultType="HashMap">
@@ -22,7 +23,14 @@
         on w.employeeID=e.employeeID
         where w.timeDate=#{date} and  w.scenicID=#{scenicID} and isOnline=true;
     </select>
-
+    <select id="querySingleEmployee" resultType="HashMap" >
+        select w.timeDate,e.name,w.employeeID,s.scenicName , w.receptionCount,w.fiveStarCount, w.fourStarCount,
+               w.threeStarCount,w.twoStarCount,w.oneStarCount
+        from employee  as e
+                 join workRecord as w on w.employeeID=e.employeeID
+                 join scenic as s on w.scenicID=s.scenicID
+        where  w.employeeID=#{employeeID};
+    </select>
     <update id="employeeLogout" >
         update workRecord set isOnline=false,punchOff=#{clock}
         where timeDate=#{date} and employeeID=#{employeeID};
