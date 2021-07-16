@@ -1,31 +1,12 @@
-function getSinglePerson(dateStart,dateEnd,employeeID){
-    tableBody.find("tr").remove()
-    $.get(
-        "../excitation",
-        {
-            "doWhat":"singlePersonCount",
-            "startDate":dateStart,
-            "endDate":dateEnd,
-            "employeeID":employeeID,
-        },
-        function (data){
-            for(let record of data){
-                tableBody.append(
-                    '<tr><td>'+record.name+'</td>' +
-                    '<td>'+record.timeDate+'</td>' +
-                    '<td>'+record.scenicName+'</td>' +
-                    '<td>'+record.receptionCount+'</td>' +
-                    '<td>'+record.fiveStarCount+'</td>' +
-                    '<td>'+record.fourStarCount+'</td>' +
-                    '<td>'+record.threeStarCount+'</td>'+
-                    '<td>'+record.twoStarCount+'</td>'+
-                    '<td>'+record.oneStarCount+'</td></tr>'
-                )
-            }
-            $("table").trigger("update", [true]);
-        },
-        "json"
-    )
+function exportTb(filename){
+    $(".list-box").table2excel({
+        exclude: ".noExl",
+        name: "Excel Document Name",
+        filename: filename,
+        exclude_img: true,
+        exclude_links: true,
+        exclude_inputs: true
+    });
 }
 function getToday(){
     let nowDate = new Date();

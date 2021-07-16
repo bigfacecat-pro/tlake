@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context    https://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context    https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <context:property-placeholder location="classpath:database.properties"/>
     <context:component-scan base-package="com.the.dao"/>
+
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close" lazy-init="false">
         <property name="driverClassName" value="${jdbc.Driver}"/>
         <property name="url" value="${jdbc.url}"/>
@@ -17,14 +19,11 @@
         <property name="maxActive" value="50" />
         <property name="maxWait" value="30000" />
     </bean>
-
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
         <!--property name="mapperLocations" value="classpath:com/the/dao/*.xml"/-->
     </bean>
-
-
     <bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!---->
         <!--注入sqlSessionFactory-->
@@ -32,4 +31,12 @@
         <!--要扫描的包-->
         <property name="basePackage" value="com.the.dao"/>
     </bean>
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- 使用注解事务，需要添加Transactional注解属性 -->
+    <tx:annotation-driven  transaction-manager="transactionManager"/>
+
+
 </beans>

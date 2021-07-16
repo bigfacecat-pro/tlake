@@ -50,7 +50,7 @@
     let QRCodeInput=$("#gunInput")
     let QRCodeTip=$(".inputTip")
     let passengerTrafficTip=$("#countAcc")
-    setInterval("isEmployeesHere()",10000)
+    //setInterval("isEmployeesHere()",10000)
     $("ul.toolBar-subMenu").on('click','li',function (){
         let where=$(this).text()
         isWhere=scenicGroup.get(where)
@@ -99,7 +99,7 @@
             emp=emp+item+" "
         emp=emp.substr(0,emp.length-1)
         $.post(
-            "/reception/create",
+            "/ticketrecord/create",
             {
                 "ticketID": QRCodeInput.val(),
                 "scenicID": isWhere ,

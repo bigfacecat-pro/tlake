@@ -12,6 +12,13 @@
     <mvc:default-servlet-handler/>
     <!--注解驱动-->
     <mvc:annotation-driven/>
+
+
+    <bean class="com.the.config.SpringGlobalExceptionHandler">
+        <property name="exceptionAttribute" value="ex"/>
+    </bean>
+
+
     <!--  配置Moduleandview返回路径  定义view的公共路径 -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/page/"/>

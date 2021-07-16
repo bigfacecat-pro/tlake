@@ -1,9 +1,6 @@
 package com.the.config;
 
-import com.the.service.ReceptionService;
-import com.the.service.ReceptionServiceImpl;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -14,13 +11,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SpringWebSocketHandler extends TextWebSocketHandler {
-    private static Logger logger = LoggerFactory.getLogger(SpringWebSocketHandler.class);
-
+    private static Logger logger = Logger.getLogger(SpringWebSocketHandler.class);
     private static final Map<String, WebSocketSession> users;  //Map来存储WebSocketSession，key用USER_ID 即在线用户列表
-
-    //用户标识
     private static final String USER_ID = "WEBSOCKET_USERID";   //对应监听器从的key
-
 
     static {
         users =  new HashMap<String, WebSocketSession>();
@@ -33,10 +26,8 @@ public class SpringWebSocketHandler extends TextWebSocketHandler {
      */
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 
-        System.out.println("成功建立websocket连接!");
         String userId = (String) session.getAttributes().get(USER_ID);
         users.put(userId,session);
-        System.out.println("当前线上用户数量:"+users.size());
 
     }
 
@@ -46,9 +37,7 @@ public class SpringWebSocketHandler extends TextWebSocketHandler {
     public void afterConnectionClosed(WebSocketSession session, CloseStatus closeStatus) throws Exception {
         logger.debug("关闭websocket连接");
         String userId= (String) session.getAttributes().get(USER_ID);
-        System.out.println("用户"+userId+"已退出！");
         users.remove(userId);
-        System.out.println("剩余在线用户"+users.size());
     }
 
     /**

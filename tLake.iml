@@ -41,6 +41,15 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/src/main/resources" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:5.3.8" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.3.8" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.3.8" level="project" />
@@ -63,6 +72,10 @@
     <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.76" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-websocket:5.3.8" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-messaging:5.3.8" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.31" level="project" />
+    <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-websocket:8.5.15" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-core:8.5.15" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-simple:1.7.25" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
   </component>
 </module>

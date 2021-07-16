@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/src/main/java/com/the/dao/RecordMapper.xml" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/the/dao/EmployeeRecordMapper.xml" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/resources/mybatis-config.xml" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/tianlelake.sql" dialect="MySQL" />
   </component>

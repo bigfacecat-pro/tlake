@@ -1,5 +1,4 @@
 import com.the.service.EmployeeService;
-import com.the.service.RecordService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
